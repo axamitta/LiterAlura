@@ -11,7 +11,7 @@ Permite buscar libros, filtrar por idioma, almacenar autores y consultar autores
 - Hibernate / JPA
 - Base de datos relacional (PostgreSQL)
 - API externa: [Gutendex](https://gutendex.com/)
-- Librerías: Lombok, Jakarta Persistence
+- Librerías: `Lombok`, `Jakarta Persistence`
 
 ---
 
@@ -25,7 +25,7 @@ La clase `Principal` implementa todas las funcionalidades del proyecto:
 2. **Mostrar libros buscados**  
    Lista todos los libros que se han buscado y guardado localmente.
 
-3. **Filtrar libros por idioma**  
+3. **Mostrar libros buscados por idioma**  
    Permite filtrar los libros guardados según el código de idioma (por ejemplo: `en`, `es`, `fr`).
 
 4. **Mostrar autores de los libros buscados**  
@@ -36,6 +36,10 @@ La clase `Principal` implementa todas las funcionalidades del proyecto:
 
 6. **Mostrar todos los libros de la base**  
    Muestra todos los libros almacenados en la base de datos, con su título, autor, idioma y número de descargas.
+   
+---
+   ### Menú principal de la aplicación en la consola
+![Menú principal](menu.jpg "Pantalla del menú de la consola")
 
 ---
 
@@ -54,18 +58,17 @@ La clase `Principal` implementa todas las funcionalidades del proyecto:
   - **`LibroRepository`**: permite realizar operaciones CRUD sobre la entidad `Libro` y consultas filtradas por idioma u otros criterios.
 
 - `service/`  
-  Contiene clases que encapsulan la lógica de negocio o de integración con servicios externos:
+  Contiene clases que encapsulan la lógica de negocio y de integración con servicios externos:
   - **`ConsumoAPI`**: se encarga de realizar las peticiones HTTP a la API de Gutenberg para obtener información de libros según búsquedas del usuario.  
   - **`ConvierteDatos`**: convierte la respuesta JSON obtenida de la API en objetos Java (`RespuestaLibros` y `DatosLibro`) para que puedan ser usados en la aplicación.
 
 - `principal/`
-- **`Principal.java`**  
+- **`Principal`**  
   Contiene la clase principal que gestiona la interacción con el usuario a través de un menú de consola. Implementa toda la lógica de:
   - Búsqueda de libros por título o idioma.  
   - Almacenamiento de libros y autores en la base de datos.  
   - Visualización de autores y libros, incluyendo autores vivos en un año específico.  
   - Visualización de todos los libros almacenados.
-rio.
 
 ---
 
@@ -83,7 +86,7 @@ Abre tu consola de PostgreSQL y ejecuta:
 CREATE DATABASE literalura;
 ```
 ### 2. Configura `application.properties`
-
+```
 spring.datasource.url=jdbc:postgresql://localhost:5432/literalura
 spring.datasource.username=tu_usuario_aqui
 spring.datasource.password=tu_contraseña_aqui
@@ -92,4 +95,5 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+```
 
